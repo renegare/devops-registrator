@@ -1,2 +1,25 @@
-app:
-  build: .
+version: "2"
+
+services:
+  app:
+    build: .
+    environment:
+      GET_CONSUL_HOST: "http://requestb.in/zn6p5gzn"
+    command:
+      - -resync
+      - "5"
+      - -internal
+      # - consul://consul:8500
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - ./entry.sh:/tmp/entry.sh
+
+  consul:
+    image: gliderlabs/consul-server:0.6
+    command:
+      - -dev
+      - -ui
+    ports:
+      - 8400 # Gossip
+      - 8500 # API
+      - 8600/udp # DNS

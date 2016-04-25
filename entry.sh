@@ -1,5 +1,10 @@
 #!/bin/sh
-export LOCAL_IP=$(curl -s 169.254.169.254/latest/meta-data/local-ipv4)
-echo $LOCAL_IP
-echo $@
-# exec "/bin/registrator"
+
+CONSUL_HOST=""
+
+if [ -z ${GET_CONSUL_HOST+x} ];
+  then printf "";
+  else CONSUL_HOST=$(curl -s $GET_CONSUL_HOST);
+fi
+
+`/bin/registrator $@ $CONSUL_HOST`
