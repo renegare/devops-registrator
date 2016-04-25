@@ -1,3 +1,3 @@
-FROM gliderlabs/registrator:7
+FROM gliderlabs/registrator:v7
 
 RUN apk-install -t curl
