@@ -1,0 +1,21 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker -v
+    - docker-compose -v
+    - docker login -e $DOCKER_REGISTRY_EMAIL -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
+
+test:
+  override:
+    - make build:
+        timeout: 1200
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - make push:
+          timeout: 1200
