@@ -21,3 +21,12 @@ services:
       - -ui
     ports:
       - 8500:8500 # API
+
+  sample_a:
+    image: renegare/ecsproxy:4af3de9
+    environment:
+      SERVICE_NAME: api
+      SERVICE_TAGS: web,prod
+    restart: always
+    ports:
+      - 3000:3000
