@@ -16,7 +16,7 @@ dependencies:
 
 test:
   override:
-    - echo "Docker Host: $DOCKER_HOST"
+    - 'echo "Docker Host: $DOCKER_HOST"'
     - make build:
         timeout: 1200
 
