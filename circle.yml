@@ -12,8 +12,7 @@ dependencies:
   override:
     - docker -v
     - docker-compose -v
-    # - docker login -h
-    # - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS
 
 test:
   override:
