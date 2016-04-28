@@ -19,6 +19,7 @@
   "homepage": "https://github.com/renegare/devops-registrator#readme",
   "devDependencies": {
     "ava": "^0.14.0",
+    "bluebird": "^3.3.5",
     "chai": "^3.5.0",
     "consul": "^0.25.0",
     "debug": "^2.2.0",

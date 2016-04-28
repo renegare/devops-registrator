@@ -3,13 +3,11 @@ version: "2"
 services:
   app:
     build: .
-    environment:
-      GET_CONSUL_HOST: "http://requestb.in/zn6p5gzn"
     command:
       - -resync
       - "5"
       - -internal
-      # - consul://consul:8500
+      - consul://consul:8500
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
       - ./entry.sh:/tmp/entry.sh
@@ -25,8 +23,14 @@ services:
   sample_a:
     image: renegare/ecsproxy:4af3de9
     environment:
-      SERVICE_NAME: api
-      SERVICE_TAGS: web,prod
+      SERVICE_NAME: sample_a
     restart: always
     ports:
       - 3000:3000
+
+
+
+
+
+# environment:
+#   GET_CONSUL_HOST: "http://requestb.in/zn6p5gzn"
