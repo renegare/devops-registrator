@@ -18,9 +18,9 @@ test:
   override:
     - make build:
         timeout: 1200
-
-deployment:
-  repository:
-    commands:
-      - make push:
-          timeout: 1200
+# 
+# deployment:
+#   repository:
+#     commands:
+#       - make push:
+#           timeout: 1200
