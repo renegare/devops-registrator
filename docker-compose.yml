@@ -3,6 +3,7 @@ version: "2"
 services:
   app:
     build: .
+    # image: gliderlabs/registrator:v7
     command:
       - -resync
       - "5"

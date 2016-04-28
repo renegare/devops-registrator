@@ -50,9 +50,8 @@ test('verify sample app A is reachable', () => {
 test('verify services are registered', () =>
   consul.catalog.service.list()
     .then(res => res[0])
-    .then(services => expect(services).to.eql({
-      consul: [],
-      sample_a: []
-      // sample_b: []
-    }))
+    .then(services => {
+      expect(Object.keys(services)).to.contain('sample_a')
+      expect(services.sample_a).to.have.eql([])
+    })
 )
