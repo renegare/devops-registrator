@@ -1,6 +1,17 @@
 const test = require('ava').test
 const expect = require('chai').expect
+const debug = require('debug')('test')
+const req = require('request-promise')
 
-test('something', () => {
-  expect('chai').to.eql('chai')
+const DOCKER_HOST = process.env.DOCKER_HOST.replace(/tcp:\/\/([^:]+):.+$/, '$1') || '127.0.0.1'
+debug('docker host', DOCKER_HOST)
+
+const consulReq = req.defaults({
+  baseUrl: 'http://' + DOCKER_HOST + ':8500',
+  resolveWithFullResponse: true
+})
+
+test('verify consul is reachable', () => {
+  return consulReq('/v1/status/leader')
+    .then(res => expect(res.statusCode).to.eql(200))
 })

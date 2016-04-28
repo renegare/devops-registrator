@@ -4,7 +4,8 @@
   "description": "tooling to test registrator instance",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "DEBUG=test ava",
+    "dev": "nodemon `which npm` test"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   "devDependencies": {
     "ava": "^0.14.0",
     "chai": "^3.5.0",
+    "consul": "^0.25.0",
+    "debug": "^2.2.0",
+    "nodemon": "^1.9.1",
     "request-promise": "^3.0.0"
   }
 }
