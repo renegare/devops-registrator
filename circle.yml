@@ -1,4 +1,8 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/bin/docker-compose
+    - sudo chmod 0755 /usr/bin/docker-compose
   services:
     - docker
 
@@ -6,17 +10,18 @@ dependencies:
   override:
     - docker -v
     - docker-compose -v
-    - docker login -h
-    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
+    # - docker login -h
+    # - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS $DOCKER_REGISTRY
 
 test:
   override:
-    - make build:
-        timeout: 1200
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - make push:
-          timeout: 1200
+    - echo "no testing here"
+#     - make build:
+#         timeout: 1200
+#
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - make push:
+#           timeout: 1200
