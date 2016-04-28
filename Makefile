@@ -15,10 +15,14 @@ build:
 	-docker images -qaf dangling=true | xargs docker rmi
 	docker images | grep $(DOCKER_REPO)/$(APP_NAME)
 
-test:
-	docker-compose up
-	npm test
-
 push:
 	docker push $(DOCKER_REPO)/$(APP_NAME):latest
 	docker push $(DOCKER_REPO)/$(APP_NAME):$(VERSION)
+
+test:
+	docker-compose up -d
+	sleep 5
+	docker-compose ps
+	npm test
+	docker-compose down
+	docker-compose ps

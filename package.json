@@ -1,0 +1,24 @@
+{
+  "name": "devops-registrator",
+  "version": "0.0.0",
+  "description": "tooling to test registrator instance",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renegare/devops-registrator.git"
+  },
+  "author": "mudi@renegare.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renegare/devops-registrator/issues"
+  },
+  "homepage": "https://github.com/renegare/devops-registrator#readme",
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "chai": "^3.5.0",
+    "request-promise": "^3.0.0"
+  }
+}
