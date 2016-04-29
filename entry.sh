@@ -1,10 +1,9 @@
 #!/bin/sh
 
-CONSUL_HOST=""
-
-if [ -z ${GET_CONSUL_HOST+x} ];
-  then echo  "";
-else CONSUL_HOST=consul://$(curl -s $GET_CONSUL_HOST):8500;
+if ! [[ -z ${GET_CONSUL_HOST+x} ]];
+  then
+    HOST=$(curl -s $GET_CONSUL_HOST);
+    XARGS="-ip $HOST consul://$HOST:8500";
 fi
 
-`/bin/registrator $@ $CONSUL_HOST`
+`/bin/registrator $@ $XARGS`

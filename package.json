@@ -4,8 +4,7 @@
   "description": "tooling to test registrator instance",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=test ava",
-    "dev": "nodemon `which npm` test"
+    "start": "node ec2-magic-meta-service.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +17,8 @@
   },
   "homepage": "https://github.com/renegare/devops-registrator#readme",
   "devDependencies": {
-    "ava": "^0.14.0",
-    "bluebird": "^3.3.5",
-    "chai": "^3.5.0",
-    "consul": "^0.25.0",
     "debug": "^2.2.0",
-    "nodemon": "^1.9.1",
-    "request-promise": "^3.0.0"
+    "koa": "^1.2.0",
+    "koa-logger": "^1.3.0"
   }
 }

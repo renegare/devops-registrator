@@ -2,13 +2,16 @@ version: "2"
 
 services:
   app:
-    build: .
-    # image: gliderlabs/registrator:v7
+    image: renegare/devops-registrator:latest
     command:
       - -resync
       - "5"
+      - -retry-attempts
+      - "-1"
       - -internal
       - consul://consul:8500
+    # environment:
+    #   GET_CONSUL_HOST: "http://10.0.2.2:3000/latest/meta-data/local-ipv4"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
       - ./entry.sh:/tmp/entry.sh
@@ -27,11 +30,4 @@ services:
       SERVICE_NAME: sample_a
     restart: always
     ports:
-      - 3000:3000
-
-
-
-
-
-# environment:
-#   GET_CONSUL_HOST: "http://requestb.in/zn6p5gzn"
+      - 3000
